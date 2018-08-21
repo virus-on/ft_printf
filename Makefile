@@ -107,10 +107,10 @@ OBJ = $(PRINTFSRCS:.c=.o)
 
 all: $(NAME)
 
-$(OBJ): %.o: %.c
+$(LIBOBJ): %.o: %.c
 	gcc -c $(CFLAGS) $< -o $@
 
-$(LIBOBJ): %.o: %.c
+$(OBJ): %.o: %.c
 	gcc -c $(CFLAGS) $< -o $@
 
 $(NAME): $(LIBOBJ) $(OBJ)
