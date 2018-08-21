@@ -105,7 +105,7 @@ PRINTFSRCS = $(addprefix src/, $(FILES))
 LIBOBJ = $(LIBSRCS:.c=.o)
 OBJ = $(PRINTFSRCS:.c=.o)
 
-all: $(NAME)
+all: $(LIBOBJ) $(NAME)
 
 $(LIBOBJ): %.o: %.c
 	gcc -c $(CFLAGS) $< -o $@
