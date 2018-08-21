@@ -3,7 +3,6 @@
 # include "libft.h"
 # include <stdarg.h>
 # include <stdio.h>
-# include <inttypes.h>
 
 # define FT_PREC "sSpdDioOuUxXcC%"
 
