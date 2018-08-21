@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mhwangbo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/04/09 16:49:51 by mhwangbo          #+#    #+#             */
+/*   Updated: 2018/05/09 16:41:50 by mhwangbo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 # include "libft.h"
@@ -44,6 +56,13 @@ int					ft_character(va_list args, const char *format,
 		t_numbers *n);
 
 /*
+** ft_color.c
+*/
+void				ft_color(const char *format, t_numbers *n, int *x);
+void				ft_color_one(char *str, t_numbers *n, int *x);
+void				ft_color_two(char *str, t_numbers *n, int *x);
+
+/*
 ** ft_decimal.c
 */
 void				ft_d_width(t_numbers *n, t_flag flags, int len);
@@ -83,11 +102,6 @@ int					ft_flag(const char format, t_flag *flags);
 long long			ft_d_cv(t_flag flags, va_list args);
 unsigned long long	ft_un_cv(t_flag flags, va_list args);
 long double			ft_f_cv(t_flag flags, va_list args);
-
-/*
-** ft_n_save.c
-*/
-int					ft_n_save(va_list args, const char *format, t_numbers *n);
 
 /*
 ** ft_pointer.c

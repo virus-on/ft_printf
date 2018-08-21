@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf_two.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mhwangbo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/05/08 18:03:59 by mhwangbo          #+#    #+#             */
+/*   Updated: 2018/05/14 20:06:10 by mhwangbo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 int		ft_printf_send(va_list args, t_numbers *n, const char *format)
@@ -21,7 +33,6 @@ int		ft_printf_send(va_list args, t_numbers *n, const char *format)
 	}
 	return (-1);
 }
-
 
 int		ft_vsprintf_s(const char *format, int i)
 {

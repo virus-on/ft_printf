@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mpaziuk <marvin@42.fr>                     +#+  +:+       +#+         #
+#    By: mhwangbo <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2018/04/23 14:47:29 by mpaziuk           #+#    #+#              #
-#    Updated: 2018/05/23 18:10:09 by mpaziuk          ###   ########.fr        #
+#    Created: 2018/04/23 14:47:29 by mhwangbo          #+#    #+#              #
+#    Updated: 2018/05/23 18:10:09 by mhwangbo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS += -Wall -Wextra -Werror
 CFLAGS += -I includes/
 
 FILES = ft_printf.c\
@@ -31,7 +31,6 @@ FILES = ft_printf.c\
 		ft_string.c\
 		ft_wide_str.c\
 		ft_wide_char.c
-
 
 LIBFILES =	ft_atoi.c \
 			ft_bzero.c \
@@ -98,29 +97,28 @@ LIBFILES =	ft_atoi.c \
 			ft_wordlen.c \
 			get_next_line.c 
 
-
-LIBSRCS = $(addprefix src/libft/, $(LIBFILES))
 PRINTFSRCS = $(addprefix src/, $(FILES))
+LIBSRCS = $(addprefix src/libft/, $(LIBFILES))
 
-LIBOBJ = $(LIBSRCS:.c=.o)
 OBJ = $(PRINTFSRCS:.c=.o)
+LIBOBJ = $(LIBSRCS:.c=.o)
 
-all: $(LIBOBJ) $(NAME)
-
-$(LIBOBJ): %.o: %.c
-	gcc -c $(CFLAGS) $< -o $@
+all: $(NAME)
 
 $(OBJ): %.o: %.c
-	gcc -c $(CFLAGS) $< -o $@
+	@gcc -c $(CFLAGS) $< -o $@
+
+$(LIBOBJ): %.o: %.c
+	@gcc -c $(CFLAGS) $< -o $@
 
 $(NAME): $(LIBOBJ) $(OBJ)
-	ar rcs $(NAME) $(LIBOBJ) $(OBJ) 
+	@ar rcs $(NAME) $(OBJ) $(LIBOBJ)
 
 clean:
-	rm -rf $(OBJ) $(LIBOBJ)
+	@rm -rf $(OBJ) $(LIBOBJ)
 
 fclean: clean
-	rm -rf $(NAME)
+	@rm -rf $(NAME)
 
 re: fclean all
 

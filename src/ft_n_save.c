@@ -1,39 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_n_save.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhwangbo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/26 17:10:29 by mhwangbo          #+#    #+#             */
-/*   Updated: 2018/03/09 23:34:58 by mhwangbo         ###   ########.fr       */
+/*   Created: 2018/05/06 20:27:59 by mhwangbo          #+#    #+#             */
+/*   Updated: 2018/05/14 19:56:49 by mhwangbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void	ft_putnbr(int n)
+int		ft_n_save(va_list args, const char *format, t_numbers *n)
 {
-	if ((n > 2147483647) || (n < -2147483648))
-		return ;
-	if (n == -2147483648)
-	{
-		ft_putstr("-2147483648");
-		return ;
-	}
-	if (n < 0)
-	{
-		ft_putchar('-');
-		n *= -1;
-	}
-	if ((n >= -2147483648) && (n <= 2147483647))
-	{
-		if (n < 10)
-		{
-			ft_putchar((n + '0'));
-			return ;
-		}
-		ft_putnbr(n / 10);
-		ft_putchar((n % 10) + '0');
-	}
+	t_flag	flags;
+	int		*i;
+	int		form;
+
+	form = 0;
+	flags = ft_flags(format, 7, args, &form);
+	i = va_arg(args, int*);
+	i[0] = n->return_i;
+	return (form + 1);
 }

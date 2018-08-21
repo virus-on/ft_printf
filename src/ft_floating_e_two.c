@@ -1,30 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_decimal.c                                       :+:      :+:    :+:   */
+/*   ft_floating_e_two.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhwangbo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/17 19:28:59 by mhwangbo          #+#    #+#             */
-/*   Updated: 2018/05/09 16:41:54 by mhwangbo         ###   ########.fr       */
+/*   Created: 2018/05/08 17:56:24 by mhwangbo          #+#    #+#             */
+/*   Updated: 2018/05/08 18:00:11 by mhwangbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_d_width(t_numbers *n, t_flag flags, int len)
-{
-	if (flags.precision > len)
-		while (flags.width-- > flags.precision)
-			n->return_i += (flags.zero == 1 ?
-			write(n->fd, "0", 1) : write(n->fd, " ", 1));
-	else
-		while (flags.width-- > len)
-			n->return_i += (flags.zero == 1 ?
-			write(n->fd, "0", 1) : write(n->fd, " ", 1));
-}
-
-void	ft_d_put(char *str, int len, t_numbers *n, t_flag flags)
+void	ft_e_put(char *str, int len, t_numbers *n, t_flag flags)
 {
 	int		i;
 
@@ -47,51 +35,43 @@ void	ft_d_put(char *str, int len, t_numbers *n, t_flag flags)
 		ft_d_width(n, flags, len);
 }
 
-void	ft_d_precision(t_flag *flags)
+void	ft_e_order(t_flag flags, char *str, int len, t_numbers *n)
 {
-	if ((flags->plus || flags->space) && !flags->sign)
-		flags->width -= 1;
-	else if (flags->sign)
-		flags->width -= 1;
-	if (flags->minus)
-		flags->zero = 0;
-	if (flags->zero && flags->precision < flags->width && flags->pre_e)
-		flags->zero = 0;
-}
-
-void	ft_d_sign(int *len, char *str, t_flag *flags)
-{
-	if (str[0] == '-')
-	{
-		flags->sign = 1;
-		*len -= 1;
-	}
-}
-
-int		ft_decimal(va_list args, const char *format, t_numbers *n)
-{
-	t_flag		flags;
-	int			form;
-	char		*str;
-	long long	i;
-	int			len;
-
-	form = 0;
-	flags = ft_flags(format, 3, args, &form);
-	i = ft_d_cv(flags, args);
-	str = ft_itoa(i, flags);
-	len = ft_strlen(str);
-	ft_d_sign(&len, str, &flags);
-	ft_d_precision(&flags);
 	if (flags.minus || flags.zero)
 		flags.sign == 1 ?
 		ft_d_put(str + 1, len, n, flags) : ft_d_put(str, len, n, flags);
 	else
 	{
-		ft_d_width(n, flags, len);
+		ft_f_width(n, flags, len);
 		flags.sign == 1 ?
 		ft_d_put(str + 1, len, n, flags) : ft_d_put(str, len, n, flags);
 	}
-	free(str);
-	return (form + 1);
+}
+
+void	ft_ftoa_e_ss(long double *val, t_numbers *n)
+{
+	unsigned long long int	tmp;
+
+	n->e_no = 0;
+	tmp = (unsigned long long int)*val;
+	if (*val == 0)
+		return ;
+	else if (tmp > 9)
+	{
+		while (tmp > 9)
+		{
+			*val /= 10;
+			tmp = (unsigned long long int)*val;
+			n->e_no += 1;
+		}
+	}
+	else if (tmp < 1)
+	{
+		while (tmp < 1)
+		{
+			*val *= 10;
+			tmp = (unsigned long long int)*val;
+			n->e_no -= 1;
+		}
+	}
 }

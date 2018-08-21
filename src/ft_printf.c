@@ -1,5 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mhwangbo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/04/08 18:26:02 by mhwangbo          #+#    #+#             */
+/*   Updated: 2018/05/14 20:57:30 by mhwangbo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
-#include "libft.h"
 
 /*
 ** 0 = int converted to unsigned char
@@ -11,6 +22,25 @@
 ** 5 = percent
 ** 6 = change fd
 */
+
+void	ft_vsprintf_ss(const char *format, t_numbers *n)
+{
+	int	x;
+
+	if (format[n->i] != '%' && format[n->i] != '\0')
+	{
+		ft_color(format + n->i, n, &x);
+		if (x != 0)
+		{
+			n->i += 5;
+		}
+		else
+		{
+			n->return_i += write(n->fd, &format[n->i], 1);
+			n->i += 1;
+		}
+	}
+}
 
 int		ft_vsprintf(const char *format, va_list args, t_numbers *n)
 {
@@ -32,11 +62,7 @@ int		ft_vsprintf(const char *format, va_list args, t_numbers *n)
 				n->i = 0;
 			}
 		}
-		else
-		{
-			n->return_i += write(n->fd, &format[n->i], 1);
-			n->i += 1;
-		}	
+		ft_vsprintf_ss(format, n);
 	}
 	return (0);
 }
