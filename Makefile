@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mhwangbo <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: mpaziuk <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2018/04/23 14:47:29 by mhwangbo          #+#    #+#              #
-#    Updated: 2018/05/23 18:10:09 by mhwangbo         ###   ########.fr        #
+#    Created: 2018/04/23 14:47:29 by mpaziuk           #+#    #+#              #
+#    Updated: 2018/05/23 18:10:09 by mpaziuk          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -106,19 +106,19 @@ LIBOBJ = $(LIBSRCS:.c=.o)
 all: $(NAME)
 
 $(OBJ): %.o: %.c
-	@gcc -c $(CFLAGS) $< -o $@
+	gcc -c $(CFLAGS) $< -o $@
 
 $(LIBOBJ): %.o: %.c
-	@gcc -c $(CFLAGS) $< -o $@
+	gcc -c $(CFLAGS) $< -o $@
 
 $(NAME): $(LIBOBJ) $(OBJ)
-	@ar rcs $(NAME) $(OBJ) $(LIBOBJ)
+	ar rcs $(NAME) $(OBJ) $(LIBOBJ)
 
 clean:
-	@rm -rf $(OBJ) $(LIBOBJ)
+	rm -rf $(OBJ) $(LIBOBJ)
 
 fclean: clean
-	@rm -rf $(NAME)
+	rm -rf $(NAME)
 
 re: fclean all
 
