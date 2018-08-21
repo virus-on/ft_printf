@@ -114,7 +114,7 @@ $(OBJ): %.o: %.c
 	gcc -c $(CFLAGS) $< -o $@
 
 $(NAME): $(LIBOBJ) $(OBJ)
-	ar rcs $(NAME) $(OBJ) $(LIBOBJ)
+	ar rcs $(NAME) $(LIBOBJ) $(OBJ) 
 
 clean:
 	rm -rf $(OBJ) $(LIBOBJ)
