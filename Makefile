@@ -12,7 +12,7 @@
 
 NAME = libftprintf.a
 
-CFLAGS += -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 CFLAGS += -I includes/
 
 FILES = ft_printf.c\
@@ -31,6 +31,7 @@ FILES = ft_printf.c\
 		ft_string.c\
 		ft_wide_str.c\
 		ft_wide_char.c
+
 
 LIBFILES =	ft_atoi.c \
 			ft_bzero.c \
@@ -97,11 +98,12 @@ LIBFILES =	ft_atoi.c \
 			ft_wordlen.c \
 			get_next_line.c 
 
-PRINTFSRCS = $(addprefix src/, $(FILES))
-LIBSRCS = $(addprefix src/libft/, $(LIBFILES))
 
-OBJ = $(PRINTFSRCS:.c=.o)
+LIBSRCS = $(addprefix src/libft/, $(LIBFILES))
+PRINTFSRCS = $(addprefix src/, $(FILES))
+
 LIBOBJ = $(LIBSRCS:.c=.o)
+OBJ = $(PRINTFSRCS:.c=.o)
 
 all: $(NAME)
 
