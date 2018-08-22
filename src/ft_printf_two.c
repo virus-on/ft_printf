@@ -25,7 +25,7 @@ int		ft_printf_send(va_list args, t_numbers *n, const char *format)
 	else if (n->spec == SPEC_POINTER)
 		return (ft_pointer(args, format, n));
 	else if (n->spec == SPEC_PERCENT)
-		return (ft_percent(args, format, n));
+		return (ft_percent(format, n));
 	return (INVALID);
 }
 

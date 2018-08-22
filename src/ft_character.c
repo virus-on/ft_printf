@@ -19,14 +19,14 @@ void	ft_char_width(t_numbers *n, t_flag flags)
 		write(n->fd, "0", 1) : write(n->fd, " ", 1));
 }
 
-int		ft_percent(va_list args, const char *format, t_numbers *n)
+int		ft_percent(const char *format, t_numbers *n)
 {
 	t_flag	flags;
 	int		form;
 	char	percent;
 
 	form = 0;
-	flags = ft_flags(format, 4, args, &form);
+	flags = ft_flags(format, 4, &form);
 	percent = '%';
 	if (flags.minus)
 	{
@@ -48,7 +48,7 @@ int		ft_character(va_list args, const char *format, t_numbers *n)
 	char	c;
 
 	form = 0;
-	flags = ft_flags(format, 1, args, &form);
+	flags = ft_flags(format, 1, &form);
 	if (flags.length == 4)
 		return (ft_wide_char(args, form, flags, n));
 	c = va_arg(args, int);

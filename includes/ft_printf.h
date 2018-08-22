@@ -72,7 +72,7 @@ typedef struct		s_numbers
 ** ft_character.c
 */
 void				ft_char_width(t_numbers *n, t_flag flags);
-int					ft_percent(va_list args, const char *format, t_numbers *n);
+int					ft_percent(const char *format, t_numbers *n);
 int					ft_character(va_list args, const char *format,
 		t_numbers *n);
 

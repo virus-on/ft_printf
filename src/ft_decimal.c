@@ -77,7 +77,7 @@ int		ft_decimal(va_list args, const char *format, t_numbers *n)
 	int			len;
 
 	form = 0;
-	flags = ft_flags(format, 3, args, &form);
+	flags = ft_flags(format, 3, &form);
 	i = ft_d_cv(flags, args);
 	str = ft_itoa(i, flags);
 	len = ft_strlen(str);
