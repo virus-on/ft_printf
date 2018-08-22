@@ -18,6 +18,27 @@
 
 # define FT_PREC "sSpdDioOuUxXcC%"
 
+# define true (1)
+# define false (NULL)
+# define UP (1)
+# define DOWN (0)
+# define INVALID (-1)
+
+# define SPEC_CHAR (0)
+# define SPEC_STRING (1)
+# define SPEC_DEC (2)
+# define SPEC_UNSIGNED (3)
+# define SPEC_POINTER (4)
+# define SPEC_PERCENT (5)
+
+# define BASE_HEX 16
+# define BASE_DEC 10
+# define BASE_OCT 8
+# define BASE_BIN 2
+
+# define LEN_H 1
+# define LEN_HH 2
+
 typedef struct		s_flag
 {
 	int				spec;
@@ -56,13 +77,6 @@ int					ft_character(va_list args, const char *format,
 		t_numbers *n);
 
 /*
-** ft_color.c
-*/
-void				ft_color(const char *format, t_numbers *n, int *x);
-void				ft_color_one(char *str, t_numbers *n, int *x);
-void				ft_color_two(char *str, t_numbers *n, int *x);
-
-/*
 ** ft_decimal.c
 */
 void				ft_d_width(t_numbers *n, t_flag flags, int len);
@@ -83,17 +97,14 @@ void				ft_un_hash(t_flag *flags, t_numbers *n);
 /*
 ** ft_flags.c
 */
-t_flag				ft_flags(const char *format, int s,
-		va_list args, int *form);
+t_flag				ft_flags(const char *format, int s, int *form);
 
 /*
 ** ft_flags_detail.c
 */
 int					ft_length(const char *format, t_flag *flags, int **i);
-int					ft_precision(const char *format, t_flag *flags,
-		va_list args, int **f);
-int					ft_width(const char *format, t_flag *flags,
-		va_list args, int **form);
+int					ft_precision(const char *format, t_flag *flags, int **f);
+int					ft_width(const char *format, t_flag *flags, int **form);
 int					ft_flag(const char format, t_flag *flags);
 
 /*

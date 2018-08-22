@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-t_flag		ft_flags(const char *format, int s, va_list args, int *form)
+t_flag		ft_flags(const char *format, int s, int *form)
 {
 	t_flag	flags;
 	int		i;
@@ -25,11 +25,10 @@ t_flag		ft_flags(const char *format, int s, va_list args, int *form)
 	{
 		if ((i < 2) && (ft_strchr("#0-+ ", format[*form])))
 			i = ft_flag(format[*form], &flags);
-		else if ((i < 3) && ((format[*form] >= '0' && format[*form] <= '9')
-					|| (format[*form] == '*' && format[*form - 1] != '.')))
-			i = ft_width(format, &flags, args, &form);
+		else if ((i < 3) && ((format[*form] >= '0' && format[*form] <= '9')))
+			i = ft_width(format, &flags, &form);
 		else if ((i < 4) && (format[*form] == '.'))
-			i = ft_precision(format, &flags, args, &form);
+			i = ft_precision(format, &flags, &form);
 		else if ((i < 5) && (ft_strchr("hljzL", format[*form])))
 			i = ft_length(format, &flags, &form);
 		*form += 1;

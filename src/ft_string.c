@@ -18,7 +18,7 @@ void	ft_str_null(t_numbers *n, t_flag flag)
 
 	len = ((flag.precision <= 0 && flag.pre_e == 0) ? 6 : flag.precision);
 	while (flag.width-- > len)
-		n->return_i += (flag.zero == 1 ?
+		n->return_i += (flag.zero == UP ?
 		write(n->fd, "0", 1) : write(n->fd, " ", 1));
 	n->return_i += write(n->fd, "(null)", len);
 }
@@ -60,7 +60,7 @@ int		ft_string(va_list args, const char *format, t_numbers *n)
 	int		len;
 
 	form = 0;
-	flags = ft_flags(format, 2, args, &form);
+	flags = ft_flags(format, 2, &form);
 	if (flags.length == 4)
 		return (ft_wide_str(args, form, flags, n));
 	str = ft_strdup(va_arg(args, char*));

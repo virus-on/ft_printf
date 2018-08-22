@@ -35,7 +35,7 @@ int		ft_pointer(va_list args, const char *format, t_numbers *n)
 		form++;
 	ft_bzero(&flags, sizeof(t_flag));
 	int_v = (uintmax_t)va_arg(args, void*);
-	str = ft_llitoa_base(int_v, 16, flags);
+	str = ft_llitoa_base(int_v, BASE_HEX, flags);
 	if (int_v == 0)
 	{
 		str[0] = '0';

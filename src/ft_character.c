@@ -15,7 +15,7 @@
 void	ft_char_width(t_numbers *n, t_flag flags)
 {
 	while (flags.width-- > 1)
-		n->return_i += (flags.zero == 1 ?
+		n->return_i += (flags.zero == UP ?
 		write(n->fd, "0", 1) : write(n->fd, " ", 1));
 }
 

@@ -40,7 +40,7 @@ int		ft_length(const char *format, t_flag *flags, int **i)
 	return (4);
 }
 
-int		ft_precision(const char *format, t_flag *flags, va_list args, int **f)
+int		ft_precision(const char *format, t_flag *flags, int **f)
 {
 	char	*precision;
 	int		i;
@@ -49,11 +49,6 @@ int		ft_precision(const char *format, t_flag *flags, va_list args, int **f)
 	flags->pre_e = 1;
 	i = 0;
 	**f += 1;
-	if (format[**f] == '*')
-	{
-		flags->precision = va_arg(args, int);
-		return (3);
-	}
 	while (format[**f] >= '0' && format[**f] <= '9')
 	{
 		precision[i++] = format[**f];
@@ -65,18 +60,13 @@ int		ft_precision(const char *format, t_flag *flags, va_list args, int **f)
 	return (3);
 }
 
-int		ft_width(const char *format, t_flag *flags, va_list args, int **form)
+int		ft_width(const char *format, t_flag *flags, int **form)
 {
 	char	*width;
 	int		i;
 
 	width = ft_memalloc(256);
 	i = 0;
-	if (format[**form] == '*')
-	{
-		flags->width = va_arg(args, int);
-		return (2);
-	}
 	while (format[**form] >= '0' && format[**form] <= '9')
 	{
 		width[i++] = format[**form];
@@ -91,14 +81,14 @@ int		ft_width(const char *format, t_flag *flags, va_list args, int **form)
 int		ft_flag(const char format, t_flag *flags)
 {
 	if (format == '-')
-		flags->minus = 1;
+		flags->minus = UP;
 	else if (format == '0')
-		flags->zero = 1;
+		flags->zero = UP;
 	else if (format == '+')
-		flags->plus = 1;
+		flags->plus = UP;
 	else if (format == ' ')
-		flags->space = 1;
+		flags->space = UP;
 	else if (format == '#')
-		flags->hash = 1;
+		flags->hash = UP;
 	return (1);
 }

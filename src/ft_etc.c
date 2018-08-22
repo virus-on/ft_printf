@@ -27,21 +27,21 @@ int		ft_unsigned_s(const char *format, t_flag *flags)
 	int		base;
 
 	i = 0;
-	base = 10;
+	base = BASE_DEC;
 	while (!(ft_strchr("oOuUxXb", format[i])))
 		i++;
 	if (format[i] == 'o' || format[i] == 'O')
-		base = 8;
+		base = BASE_OCT;
 	else if (format[i] == 'u' || format[i] == 'U')
-		base = 10;
+		base = BASE_DEC;
 	else if (format[i] == 'x' || format[i] == 'X')
 	{
 		if (format[i] == 'X')
 			flags->x = 1;
-		base = 16;
+		base = BASE_HEX;
 	}
 	else if (format[i] == 'b')
-		base = 2;
+		base = BASE_BIN;
 	return (base);
 }
 
@@ -83,9 +83,9 @@ void	ft_un_hash(t_flag *flags, t_numbers *n)
 {
 	if (flags->hash == 1)
 	{
-		if (flags->base == 8 || flags->base == 16)
+		if (flags->base == BASE_OCT || flags->base == BASE_HEX)
 			ft_un_write('0', n, *flags);
-		if (flags->base == 16)
+		if (flags->base == BASE_HEX)
 			ft_un_write('x', n, *flags);
 	}
 }

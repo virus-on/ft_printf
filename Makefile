@@ -18,7 +18,6 @@ CFLAGS += -I includes/
 FILES = ft_printf.c\
 		ft_printf_two.c\
 		ft_character.c\
-		ft_color.c\
 		ft_decimal.c\
 		ft_etc.c\
 		ft_flags.c\

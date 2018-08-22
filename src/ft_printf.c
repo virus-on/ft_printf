@@ -25,20 +25,10 @@
 
 void	ft_vsprintf_ss(const char *format, t_numbers *n)
 {
-	int	x;
-
 	if (format[n->i] != '%' && format[n->i] != '\0')
 	{
-		ft_color(format + n->i, n, &x);
-		if (x != 0)
-		{
-			n->i += 5;
-		}
-		else
-		{
-			n->return_i += write(n->fd, &format[n->i], 1);
-			n->i += 1;
-		}
+		n->return_i += write(n->fd, &format[n->i], 1);
+		n->i += 1;
 	}
 }
 
