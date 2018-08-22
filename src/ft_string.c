@@ -19,8 +19,8 @@ void	ft_str_null(t_numbers *n, t_flag flag)
 	len = ((flag.precision <= 0 && flag.pre_e == 0) ? 6 : flag.precision);
 	while (flag.width-- > len)
 		n->return_i += (flag.zero == UP ?
-		write(n->fd, "0", 1) : write(n->fd, " ", 1));
-	n->return_i += write(n->fd, "(null)", len);
+		write(STD_OUT, "0", 1) : write(STD_OUT, " ", 1));
+	n->return_i += write(STD_OUT, "(null)", len);
 }
 
 void	ft_str_put(char *str, int len, t_numbers *n)
@@ -29,13 +29,13 @@ void	ft_str_put(char *str, int len, t_numbers *n)
 
 	i = -1;
 	while (++i < len)
-		n->return_i += write(n->fd, &str[i], 1);
+		n->return_i += write(STD_OUT, &str[i], 1);
 }
 
 void	ft_str_width(t_numbers *n, t_flag flags, int len)
 {
 	while (flags.width-- > len)
-		n->return_i += write(n->fd, " ", 1);
+		n->return_i += write(STD_OUT, " ", 1);
 }
 
 void	ft_string_s(t_numbers *n, t_flag flags, char *str, int len)

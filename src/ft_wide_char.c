@@ -14,7 +14,7 @@
 
 void	ft_putwchar(char c, t_numbers *n)
 {
-	n->return_i += write(n->fd, &c, 1);
+	n->return_i += write(STD_OUT, &c, 1);
 }
 
 void	ft_putwc(wchar_t wc, t_numbers *n)
@@ -48,13 +48,13 @@ int		ft_wide_char(va_list args, int form, t_flag flags, t_numbers *n)
 	wc = va_arg(args, wchar_t);
 	if (flags.minus)
 	{
-		n->return_i += write(n->fd, &wc, 1);
+		n->return_i += write(STD_OUT, &wc, 1);
 		ft_char_width(n, flags);
 	}
 	else
 	{
 		ft_char_width(n, flags);
-		n->return_i += write(n->fd, &wc, 1);
+		n->return_i += write(STD_OUT, &wc, 1);
 	}
 	return (form + 1);
 }

@@ -27,7 +27,7 @@ void	ft_vsprintf_ss(const char *format, t_numbers *n)
 {
 	if (format[n->i] != '%' && format[n->i] != '\0')
 	{
-		n->return_i += write(n->fd, &format[n->i], 1);
+		n->return_i += write(STD_OUT, &format[n->i], 1);
 		n->i += 1;
 	}
 }
@@ -35,7 +35,6 @@ void	ft_vsprintf_ss(const char *format, t_numbers *n)
 int		ft_vsprintf(const char *format, va_list args, t_numbers *n)
 {
 	ft_bzero(n, sizeof(t_numbers));
-	n->fd = 1;
 	while (format[n->i] != '\0')
 	{
 		if (format[n->i] == '%')

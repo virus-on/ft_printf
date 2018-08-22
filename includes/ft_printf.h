@@ -17,6 +17,7 @@
 # include <stdio.h>
 
 # define FT_PREC "sSpdDioOuUxXcC%"
+# define STD_OUT 1
 
 # define true (1)
 # define false (NULL)
@@ -64,7 +65,6 @@ typedef struct		s_numbers
 	int				k;
 	int				spec;
 	int				return_i;
-	int				fd;
 	int				e_no;
 }					t_numbers;
 

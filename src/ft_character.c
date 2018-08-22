@@ -16,7 +16,7 @@ void	ft_char_width(t_numbers *n, t_flag flags)
 {
 	while (flags.width-- > 1)
 		n->return_i += (flags.zero == UP ?
-		write(n->fd, "0", 1) : write(n->fd, " ", 1));
+		write(STD_OUT, "0", 1) : write(STD_OUT, " ", 1));
 }
 
 int		ft_percent(const char *format, t_numbers *n)
@@ -30,13 +30,13 @@ int		ft_percent(const char *format, t_numbers *n)
 	percent = '%';
 	if (flags.minus)
 	{
-		n->return_i += write(n->fd, &percent, 1);
+		n->return_i += write(STD_OUT, &percent, 1);
 		ft_char_width(n, flags);
 	}
 	else
 	{
 		ft_char_width(n, flags);
-		n->return_i += write(n->fd, &percent, 1);
+		n->return_i += write(STD_OUT, &percent, 1);
 	}
 	return (form + 1);
 }
@@ -54,13 +54,13 @@ int		ft_character(va_list args, const char *format, t_numbers *n)
 	c = va_arg(args, int);
 	if (flags.minus)
 	{
-		n->return_i += write(n->fd, &c, 1);
+		n->return_i += write(STD_OUT, &c, 1);
 		ft_char_width(n, flags);
 	}
 	else
 	{
 		ft_char_width(n, flags);
-		n->return_i += write(n->fd, &c, 1);
+		n->return_i += write(STD_OUT, &c, 1);
 	}
 	return (form + 1);
 }

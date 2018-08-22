@@ -17,9 +17,9 @@ void	ft_pointer_put(char *str, int len, t_numbers *n)
 	int		i;
 
 	i = -1;
-	n->return_i += write(n->fd, "0x", 2);
+	n->return_i += write(STD_OUT, "0x", 2);
 	while (++i < len)
-		n->return_i += write(n->fd, &str[i], 1);
+		n->return_i += write(STD_OUT, &str[i], 1);
 }
 
 int		ft_pointer(va_list args, const char *format, t_numbers *n)

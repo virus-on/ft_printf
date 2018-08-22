@@ -18,7 +18,7 @@ void	ft_putstr_t(char *s, t_numbers *n)
 
 	i = 0;
 	while (s[i] != '\0')
-		n->return_i += write(n->fd, &s[i++], 1);
+		n->return_i += write(STD_OUT, &s[i++], 1);
 }
 
 int		ft_unsigned_s(const char *format, t_flag *flags)
@@ -51,9 +51,9 @@ void	ft_un_write(char c, t_numbers *n, t_flag flags)
 
 	a = c - 32;
 	if (flags.x == 1 && (c >= 'a' && c <= 'z'))
-		n->return_i += write(n->fd, &a, 1);
+		n->return_i += write(STD_OUT, &a, 1);
 	else
-		n->return_i += write(n->fd, &c, 1);
+		n->return_i += write(STD_OUT, &c, 1);
 }
 
 void	ft_un_put(char *str, t_numbers *n, t_flag flags)
@@ -65,9 +65,9 @@ void	ft_un_put(char *str, t_numbers *n, t_flag flags)
 	i = flags.precision;
 	len = ft_strlen(str);
 	while (i-- > len)
-		n->return_i += write(n->fd, "0", 1);
+		n->return_i += write(STD_OUT, "0", 1);
 	if (str[0] == '0' && flags.pre_e == 1 && flags.precision == 0)
-		flags.width > 0 ? n->return_i += write(n->fd, " ", 1) : 0;
+		flags.width > 0 ? n->return_i += write(STD_OUT, " ", 1) : 0;
 	else
 	{
 		j = 0;

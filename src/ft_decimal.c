@@ -17,11 +17,11 @@ void	ft_d_width(t_numbers *n, t_flag flags, int len)
 	if (flags.precision > len)
 		while (flags.width-- > flags.precision)
 			n->return_i += (flags.zero == UP ?
-			write(n->fd, "0", 1) : write(n->fd, " ", 1));
+			write(STD_OUT, "0", 1) : write(STD_OUT, " ", 1));
 	else
 		while (flags.width-- > len)
 			n->return_i += (flags.zero == UP ?
-			write(n->fd, "0", 1) : write(n->fd, " ", 1));
+			write(STD_OUT, "0", 1) : write(STD_OUT, " ", 1));
 }
 
 void	ft_d_put(char *str, int len, t_numbers *n, t_flag flags)
@@ -30,17 +30,17 @@ void	ft_d_put(char *str, int len, t_numbers *n, t_flag flags)
 
 	i = flags.precision;
 	if (flags.sign)
-		n->return_i += write(n->fd, "-", 1);
+		n->return_i += write(STD_OUT, "-", 1);
 	else if (flags.plus && !flags.sign)
-		n->return_i += write(n->fd, "+", 1);
+		n->return_i += write(STD_OUT, "+", 1);
 	else if (flags.space && !flags.sign)
-		n->return_i += write(n->fd, " ", 1);
+		n->return_i += write(STD_OUT, " ", 1);
 	if (flags.zero)
 		ft_d_width(n, flags, len);
 	while (i-- > len)
-		n->return_i += write(n->fd, "0", 1);
+		n->return_i += write(STD_OUT, "0", 1);
 	if (str[0] == '0' && flags.pre_e == UP && flags.precision == DOWN)
-		flags.width > 0 ? n->return_i += write(n->fd, " ", 1) : 0;
+		flags.width > 0 ? n->return_i += write(STD_OUT, " ", 1) : 0;
 	else
 		ft_str_put(str, len, n);
 	if (flags.minus)
