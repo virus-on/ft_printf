@@ -1,4 +1,4 @@
-#include "ft_prinf.h"
+#include "ft_printf.h"
 
 void	ft_d_width(t_numbers *n, t_flag flags, int len)
 {
