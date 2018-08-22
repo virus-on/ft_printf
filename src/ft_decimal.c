@@ -1,3 +1,5 @@
+#include "ft_prinf.h"
+
 void	ft_d_width(t_numbers *n, t_flag flags, int len)
 {
 	if (flags.precision > len)
