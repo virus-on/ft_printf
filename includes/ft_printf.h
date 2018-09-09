@@ -6,7 +6,9 @@
 # include <stdarg.h>
 # include <stdio.h>
 
-# define FT_PREC "sSpdDioOuUxXcC%"
+# define FT_PREC ("sSpdDioOuUxXcC%")
+# define LENGTH_FLGS ("hljz")
+# define ACTION_FLAGS ("#0-+ ")
 # define STD_OUT 1
 
 # define true (1)
@@ -22,10 +24,10 @@
 # define SPEC_POINTER (4)
 # define SPEC_PERCENT (5)
 
-# define BASE_HEX 16
-# define BASE_DEC 10
-# define BASE_OCT 8
-# define BASE_BIN 2
+# define BASE_HEX (16)
+# define BASE_DEC (10)
+# define BASE_OCT (8)
+# define BASE_BIN (2)
 
 # define LEN_H 1
 # define LEN_HH 2
