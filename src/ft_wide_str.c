@@ -2,7 +2,7 @@
 
 void	ft_wstr_put(wchar_t *str, int len, t_numbers *n)
 {
-	n->return_i += write(STD_OUT, str, len - 1);
+	n->return_i += write(STD_OUT, str, len);
 }
 
 int		ft_wstrlen(const wchar_t *s)
